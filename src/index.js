@@ -15,20 +15,6 @@ export default class Transpiler{
         this.tmpDir         = path.join(this.servicePath, './.serverless');
         this.buildTmpDir    = path.join(this.tmpDir, './build');
 
-        const functionName = options.function || options.f;
-        if(!functionName){
-            throw new this.serverless.classes.Error(
-                'serverless-transpile-plugin requires a function name'
-            )
-        }
-        const { functions } = this.serverless.service;
-        this.functionOptions = functions[functionName];
-        if(!this.functionOptions){
-            throw new this.serverless.classes.Error(
-                'serverless-transpile-plugin requires function options'
-            )
-        }
-
         this.hooks = {
             'before:invoke:local:invoke':(...args)=>this.compile(...args)
         };
