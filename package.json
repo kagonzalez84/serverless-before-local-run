@@ -1,0 +1,36 @@
+{
+  "name": "serverless-before-local-run",
+  "version": "1.0.0",
+  "description": "Transpile using babel the source files before execute the lambda function",
+  "main": "./dist/index.js",
+  "scripts": {
+        "build"      : "babel $BABEL_OPTIONS --source-maps inline ./src --out-dir ./dist",
+        "dev"        : "BABEL_OPTIONS=--watch npm run build",
+        "prepublish" : "npm run build",
+        "test"       : "nyc mocha -r babel-register test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kagonzalez84/serverless-before-local-run.git"
+  },
+  "keywords": [
+    "serverless",
+    "local",
+    "lambda",
+    "babel"
+  ],
+  "author": "Olympusat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kagonzalez84/serverless-before-local-run/issues"
+  },
+  "homepage": "https://github.com/kagonzalez84/serverless-before-local-run#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015-node4": "^2.1.0",
+    "babel-preset-stage-1": "^6.16.0"
+  }
+}
